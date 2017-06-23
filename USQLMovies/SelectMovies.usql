@@ -1,0 +1,10 @@
+﻿USE DATABASE MoviesDB;
+
+@movieCount = 
+    SELECT  COUNT(movieId) AS movieCount
+    FROM dbo.Movies;
+
+OUTPUT @movieCount   
+    TO "/Data/MovieCount.csv"
+    USING Outputters.Csv();
+
