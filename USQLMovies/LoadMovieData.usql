@@ -7,8 +7,8 @@ USE DATABASE MoviesDB;
             movieId         int,
             rating          decimal,
             timestamp       int
-    FROM "/Data/Ratings.csv"
-    USING Extractors.Csv();
+    FROM "/Data/ratings.csv"
+    USING Extractors.Csv(skipFirstNRows:1);
 
 // Create table based on extraction and populate table
 DROP TABLE IF EXISTS dbo.MovieRatings;
@@ -23,8 +23,8 @@ CREATE TABLE dbo.MovieRatings (
     EXTRACT movieId      int,
             title        string,
             genres       string
-    FROM "/Data/Movies.csv"
-    USING Extractors.Csv();
+    FROM "/Data/movies.csv"
+    USING Extractors.Csv(skipFirstNRows:1);
 
 // Create table based on extraction and populate table
 DROP TABLE IF EXISTS dbo.Movies;
@@ -41,8 +41,8 @@ CREATE TABLE dbo.Movies (
             movieId         int,
             tag             string,
             timestamp       int
-    FROM "/Data/Tags.csv"
-    USING Extractors.Csv();
+    FROM "/Data/tags.csv"
+    USING Extractors.Csv(skipFirstNRows:1);
 
 // Create table based on extraction and populate table
 DROP TABLE IF EXISTS dbo.MovieTags;
@@ -50,4 +50,4 @@ CREATE TABLE dbo.MovieTags (
        INDEX clx_MovieID CLUSTERED(movieId ASC) 
        DISTRIBUTED BY HASH (movieId)
 ) AS SELECT * 
-     FROM @tagsData; 
+     FROM @tagsData;

@@ -11,7 +11,6 @@
     <Name>USQLMovies</Name>
     <RootNamespace>USQLMovies</RootNamespace>
     <RuntimeVersion>default</RuntimeVersion>
-    <OutputStreamPath>C:\Users\erik.KRING\AppData\Local\USQLDataRoot</OutputStreamPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,8 +21,12 @@
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
+    <Script Include="AnalyzeMovies.usql" />
     <Script Include="LoadMovieData.usql" />
     <Script Include="SelectMovies.usql" />
+    <ScriptCode Include="AnalyzeMovies.usql.cs">
+      <DependentUpon>AnalyzeMovies.usql</DependentUpon>
+    </ScriptCode>
     <ScriptCode Include="LoadMovieData.usql.cs">
       <DependentUpon>LoadMovieData.usql</DependentUpon>
     </ScriptCode>
